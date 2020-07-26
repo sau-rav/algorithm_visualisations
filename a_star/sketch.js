@@ -126,7 +126,7 @@ function mouseClicked(){
   }
   else if(flag == 4){
     if(mouseX >= size/2-45 && mouseX <= size/2+45 && mouseY >= size+10 && mouseY < size+35){
-      setup();
+      if(!search) setup();
     }
   }
 }
@@ -192,6 +192,7 @@ function draw() {
   else if(search){
     if(queue.length == 0){
       path_not_found = true;
+      search = false;
     }
     else{
       queue.sort(function(a, b){
@@ -205,6 +206,7 @@ function draw() {
       if(queue[lowestIdx].x == end[0] && queue[lowestIdx].y == end[1]){
         finalPoint = new Point(queue[lowestIdx].x, queue[lowestIdx].y, queue[lowestIdx].path.slice(), queue[lowestIdx].gvalue, queue[lowestIdx].hvalue);
         path_found = true;
+        search = false;
       }
       else{
         tempPoint = new Point(queue[lowestIdx].x, queue[lowestIdx].y, queue[lowestIdx].path.slice(), queue[lowestIdx].gvalue, queue[lowestIdx].hvalue); 
