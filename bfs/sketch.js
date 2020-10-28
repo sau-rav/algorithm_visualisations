@@ -120,7 +120,7 @@ function mouseClicked(){
   else if(flag == 4){
     if(mouseX >= size/2-45 && mouseX <= size/2+45 && mouseY >= size+10 && mouseY < size+35){
       //console.log("here");
-      setup();
+      if(!search) setup();
     }
   }
 }
@@ -173,9 +173,11 @@ function draw() {
   else if(search){
     if(ptr == queue.length){
       path_not_found = true;
+      search = false;
     }
     else if(queue[ptr].x == end[0] && queue[ptr].y == end[1]){
       path_found = true;
+      search = false;
     }
     else{
       for(let i = 0; i < 4; i++){
